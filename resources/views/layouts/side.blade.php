@@ -9,38 +9,17 @@
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
-                            Hizrian
+                            {{ Session::get('LoggedUser') }}
                             <span class="user-level">Administrator</span>
-                            <span class="caret"></span>
                         </span>
                     </a>
                     <div class="clearfix"></div>
-
-                    <div class="collapse in" id="collapseExample">
-                        <ul class="nav">
-                            <li>
-                                <a href="#profile">
-                                    <span class="link-collapse">My Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#edit">
-                                    <span class="link-collapse">Edit Profile</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#settings">
-                                    <span class="link-collapse">Settings</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item">
                     <a  href="{{url('admin-dashboard')}}">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
@@ -50,7 +29,7 @@
                     </span>
                     <h4 class="text-section">Components</h4>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item">   
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
                         <p>Master</p>
@@ -71,28 +50,49 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a data-toggle="collapse" href="#sidebarLayouts">
-                        <i class="fas fa-th-list"></i>
-                        <p>Sidebar Layouts</p>
+                <li class="nav-item">   
+                    <a data-toggle="collapse" href="#base1">
+                        <i class="fas fa-home"></i>
+                        <p>Home</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="sidebarLayouts">
+                    <div class="collapse" id="base1">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="../sidebar-style-1.html">
-                                    <span class="sub-item">Sidebar Style 1</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../overlay-sidebar.html">
-                                    <span class="sub-item">Overlay Sidebar</span>
+                                <a href="{{ url('admin-slider') }}">
+                                    <span class="sub-item">Slider</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
-                
+                <li class="nav-item">   
+                    <a data-toggle="collapse" href="#base3">
+                        <i class="fas fa-info"></i>
+                        <p>About Us</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="base3">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="{{ url('admin-about') }}">
+                                    <span class="sub-item">About Us</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('admin-team') }}">
+                                    <span class="sub-item">Meet Our Team</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="">
+                        <i class="fa fa-address-book"></i>
+                        <p>Contact</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

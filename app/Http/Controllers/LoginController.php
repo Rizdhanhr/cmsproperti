@@ -26,7 +26,7 @@ class LoginController extends Controller
             if($user){
                 if(Hash::check($request->password,$user->password)){
 
-                    $request->session()->put('LoggedUser',$user->id);
+                    $request->session()->put('LoggedUser',$user->email);
                     Alert::success('Sukses', 'Login Berhasil');
                     return redirect('admin-dashboard');
                    

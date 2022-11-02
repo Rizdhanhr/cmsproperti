@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-class AboutController extends Controller
+
+class AdminContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $team = DB::table('team')->get();
-        return view('about.index',compact('team'));
+        //
     }
 
     /**

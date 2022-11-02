@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Properti</title>
+	<title>About Us</title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="{{asset('template')}}/assets/img/icon.ico" type="image/x-icon"/>
 	@include('layouts.script')
@@ -16,7 +16,6 @@
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						
 						<ul class="breadcrumbs">
 							<li class="nav-home">
 								<a>
@@ -27,13 +26,7 @@
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a>Master</a>
-							</li>
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							<li class="nav-item">
-								<a>Properti</a>
+								<a>About Us</a>
 							</li>
 						</ul>
 					</div>
@@ -43,8 +36,8 @@
 								<div class="card-header">
 								
                                     <div class="d-flex align-items-center">
-										<h4 class="card-title">Properti</h4>
-										<button onclick="window.location.href='{{ route('admin-properti.create') }}'" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+										<h4 class="card-title">About Us</h4>
+										<button class="btn btn-primary btn-round ml-auto" onclick="window.location.href='{{route('admin-about.create')}}'">
 											<i class="fa fa-plus"></i>
 											Add Row
 										</button>
@@ -54,39 +47,39 @@
 									<div class="table-responsive">
 										<table id="basic-datatables" class="display table table-striped table-hover" >
 											<thead>
-											
 												<tr>
-													<th>No</th>
+													<th width="10%">No</th>
 													<th>Nama</th>
-													<th>Kategori</th>
-													<th>Harga</th>
-													<th width="10">Opsi</th>
+													<th>Judul</th>
+													{{-- <th>Deskripsi</th> --}}
+													<th>Gambar</th>
+													<th width="20%">Opsi</th>
 												</tr>
 											</thead>
 											<tbody>
-												@php $no=1; @endphp
-												@foreach($properti as $row)
+                                                @php $no=1; @endphp
+                                                @foreach ( $about as $row )
 												<tr>
-													<td>{{ $no++ }}</td>
+													<td>{{$no++}}</td>
 													<td>{{ $row->nama }}</td>
-													<td>{{ $row->nama_kategori }}</td>
-													<td>{{ $row->harga }}</td>
+													<td>{{ $row->judul }}</td>
+													{{-- <td>{!! $row->deskripsi !!}</td> --}}
+													<td><img src="{{asset($row->gambar)}}" width="200"></td>
 													<td>
 														<div class="form-button-action">
-															<button class="btn btn-sm btn-success" onclick="window.location.href='{{route('admin-properti.show',$row->id)}}'">Detail</button>
-															&nbsp;
-															<button class="btn btn-sm btn-primary" onclick="window.location.href='{{route('admin-properti.edit',$row->id)}}'">Edit</button>
-															&nbsp;
-															
-															<form action="{{route('admin-properti.destroy',$row->id)}}"  method="POST">
-															@csrf
-															@method('DELETE')
-															<button  class="btn btn-sm btn-danger" onclick="deleteConfirm(event)" type="submit">Hapus</button>
-															</form>
-															</div>
-													</td>
+                                                        <button class="btn btn-sm btn-success" onclick="window.location.href='{{route('admin-about.show',$row->id)}}'">Lihat</button>
+                                                        &nbsp;
+                                                        <button class="btn btn-sm btn-primary" onclick="window.location.href='{{route('admin-about.edit',$row->id)}}'">Edit</button>
+                                                        &nbsp;
+														<form action="{{route('admin-about.destroy',$row->id)}}"  method="POST">
+														@csrf
+														@method('DELETE')
+														<button  class="btn btn-sm btn-danger" onclick="deleteConfirm(event)" type="submit">Hapus</button>
+														</form>
+														</div>
+                                                    </td>
 												</tr>
-												@endforeach
+                                                @endforeach
 											</tbody>
 										</table>
 									</div>
@@ -130,6 +123,8 @@
 					} );
 				}
 			});
+
+			
 		});
 
 		window.deleteConfirm = function (e) {
