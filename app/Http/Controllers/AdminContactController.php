@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
+use Alert;
 
 class AdminContactController extends Controller
 {
@@ -13,7 +14,8 @@ class AdminContactController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = DB::table('contact')->get();
+        return view('admin.contact.index',compact('contacts'));
     }
 
     /**
@@ -23,7 +25,7 @@ class AdminContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.contact.create');
     }
 
     /**
@@ -34,7 +36,29 @@ class AdminContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'deskripsi' => 'required',
+            'nomor' => 'required',
+            'email' => 'required|email',
+            'alamat' => 'required'
+        ]);
+        try{
+            DB::transaction(function () use($request) {
+                DB::table('contact')->insert([
+                    'deskripsi' => $request->deskripsi,
+                    'nomor' => $request->nomor,
+                    'email' => $request->email,
+                    'whatsapp' => $request->whatsapp,
+                    'alamat' => $request->alamat
+                ]);
+             
+            });
+            Alert::success('Sukses', 'Data Berhasil Ditambah');
+            return redirect('admin-contact');
+        }catch(Exception $e){
+        
+            return redirect('/admin-contact');
+        }
     }
 
     /**
@@ -45,7 +69,8 @@ class AdminContactController extends Controller
      */
     public function show($id)
     {
-        //
+        $contact = DB::table('contact')->where('id',$id)->get();
+        return view('admin.contact.show',compact('contact'));
     }
 
     /**
@@ -56,7 +81,8 @@ class AdminContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = DB::table('contact')->where('id',$id)->get();
+        return view('admin.contact.edit',compact('contact'));
     }
 
     /**
@@ -68,7 +94,31 @@ class AdminContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'deskripsi' => 'required',
+            'nomor' => 'required',
+            'email' => 'required|email',
+            'alamat' => 'required'
+        ]);
+        try{
+            DB::transaction(function () use($request,$id) {
+                DB::table('contact')
+                ->where('id',$id)
+                ->update([
+                    'deskripsi' => $request->deskripsi,
+                    'nomor' => $request->nomor,
+                    'email' => $request->email,
+                    'whatsapp' => $request->whatsapp,
+                    'alamat' => $request->alamat
+                ]);
+             
+            });
+            Alert::success('Sukses', 'Data Berhasil Ubah');
+            return redirect('admin-contact');
+        }catch(Exception $e){
+        
+            return redirect('/admin-contact');
+        }
     }
 
     /**

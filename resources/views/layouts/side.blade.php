@@ -63,6 +63,21 @@
                                     <span class="sub-item">Slider</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ url('admin-ourservies') }}">
+                                    <span class="sub-item">Our Services</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('admin-ouragents') }}">
+                                    <span class="sub-item">Our Agents</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('admin-testimoni') }}">
+                                    <span class="sub-item">Testimoni</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -88,11 +103,17 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a href="">
+                    <a href="{{ url('admin-contact') }}">
                         <i class="fa fa-address-book"></i>
                         <p>Contact</p>
                     </a>
                 </li>
+                {{-- <li class="nav-item">
+                    <a href="">
+                        <i class="fa fa-address-book"></i>
+                        <p>Footer</p>
+                    </a>
+                </li> --}}
             </ul>
         </div>
     </div>

@@ -10,6 +10,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminAboutUsController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\AdminTeamController;
+use App\Http\Controllers\AdminContactController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\OurAgentsController;
+use App\Http\Controllers\OurServiesController;
+use App\Http\Controllers\TestimoniController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +32,7 @@ use App\Http\Controllers\AdminTeamController;
 
 Route::resource('/', HomeController::class);
 Route::resource('about',AboutController::class);
+Route::resource('contact',ContactController::class);
 Route::get('/login',[LoginController::class,'login']);
 Route::post('/postlogin',[LoginController::class,'postLogin']);
 
@@ -39,4 +45,8 @@ Route::group(['middleware' => ['authcheck']],function () {
     Route::resource('/admin-slider', SliderController::class);
     Route::resource('/admin-about', AdminAboutUsController::class);
     Route::resource('/admin-team', AdminTeamController::class);
+    Route::resource('/admin-contact', AdminContactController::class);
+    Route::resource('/admin-ouragents', OurAgentsController::class);
+    Route::resource('/admin-ourservices', OurServicesController::class);
+    Route::resource('/admin-testimoni', TestimoniController::class);
 });

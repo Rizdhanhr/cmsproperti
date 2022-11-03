@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use View;
+use DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('*', function ($view) {
+            $kategori = DB::table('kategori')->get();
+            $view->with('kategori',$kategori);
+        });
+
+        view()->composer('*', function ($view) {
+            $contact = DB::table('contact')->get();
+            $view->with('contact',$contact);
+        });
     }
 }

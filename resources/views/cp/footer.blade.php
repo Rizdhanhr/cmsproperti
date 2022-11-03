@@ -3,26 +3,27 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-4">
+          @foreach ($contact as $row)
           <div class="widget-a">
             <div class="w-header-a">
               <h3 class="w-title-a text-brand">EstateAgency</h3>
             </div>
             <div class="w-body-a">
               <p class="w-text-a color-text-a">
-                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
-                sed aute irure.
+                {!! $row->deskripsi !!}
               </p>
             </div>
             <div class="w-footer-a">
               <ul class="list-unstyled">
                 <li class="color-a">
-                  <span class="color-text-a">Phone .</span> contact@example.com</li>
+                  <span class="color-text-a">Phone :</span> {{ $row->nomor }}</li>
                 <li class="color-a">
-                  <span class="color-text-a">Email .</span> +54 356 945234</li>
+                  <span class="color-text-a">Email :</span> {{ $row->email }}</li>
               </ul>
             </div>
           </div>
         </div>
+        @endforeach
         <div class="col-sm-12 col-md-4 section-md-t3">
           <div class="widget-a">
             <div class="w-header-a">
@@ -110,10 +111,11 @@
             </ul>
           </nav>
           <div class="socials-a">
+            @foreach ($contact as $row)
             <ul class="list-inline">
               <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                <a href="{{ $row->whatsapp }}">
+                  <i class="fa fa-whatsapp" aria-hidden="true"></i>
                 </a>
               </li>
               <li class="list-inline-item">
@@ -138,6 +140,7 @@
               </li>
             </ul>
           </div>
+          @endforeach
           <div class="copyright-footer">
             <p class="copyright color-text-a">
               &copy; Copyright

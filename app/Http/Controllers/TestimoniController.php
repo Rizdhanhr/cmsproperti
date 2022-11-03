@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 
-class HomeController extends Controller
+class TestimoniController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $slider = DB::table('slider')
-        ->get();
-        $properti = DB::table('properti')
-        ->orderBy('properti.created_at','desc')
-        ->limit(5)
-        ->get();
-        return view('home.index',compact('slider','properti'));
+        //
     }
 
     /**

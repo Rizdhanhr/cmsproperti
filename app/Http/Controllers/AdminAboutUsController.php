@@ -60,7 +60,7 @@ class AdminAboutUsController extends Controller
             return redirect('admin-about');
         }catch(Exception $e){
             Alert::error('Gagal', 'Data Gagal Ditambah');
-            return redirect('admin-slider');
+            return redirect('admin-about');
         }
     }
 
