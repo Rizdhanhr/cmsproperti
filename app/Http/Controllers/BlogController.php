@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-class AboutController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,7 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = DB::table('about')->get();
-        $team = DB::table('team')->get();
-        return view('about.index',compact('team','about'));
+        return view('blog.index');
     }
 
     /**

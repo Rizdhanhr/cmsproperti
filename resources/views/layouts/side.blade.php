@@ -32,7 +32,7 @@
                 <li class="nav-item">   
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
-                        <p>Master</p>
+                        <p>Properti</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="base">
@@ -47,9 +47,26 @@
                                     <span class="sub-item">Kategori</span>
                                 </a>
                             </li>
+                            
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">   
+                    <a data-toggle="collapse" href="#base41">
+                        <i class="fas fa-newspaper"></i>
+                        <p>Blog</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="base41">
+                        <ul class="nav nav-collapse">
                             <li>
                                 <a href="{{url('admin-artikel')}}">
                                     <span class="sub-item">Artikel</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('admin-artikel-kategori')}}">
+                                    <span class="sub-item">Kategori</span>
                                 </a>
                             </li>
                         </ul>
@@ -74,7 +91,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('admin-ouragents') }}">
+                                <a href="{{ url('admin-agents') }}">
                                     <span class="sub-item">Our Agents</span>
                                 </a>
                             </li>

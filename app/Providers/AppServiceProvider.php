@@ -4,6 +4,7 @@ namespace App\Providers;
 use View;
 use DB;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,5 +34,7 @@ class AppServiceProvider extends ServiceProvider
             $contact = DB::table('contact')->get();
             $view->with('contact',$contact);
         });
+        Paginator::defaultView('view-name');
+        Paginator::defaultSimpleView('view-name');
     }
 }

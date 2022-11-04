@@ -22,7 +22,10 @@ class HomeController extends Controller
         ->get();
         $testimoni = DB::table('testimoni')->get();
         $layanan = DB::table('layanan')->get();
-        return view('home.index',compact('slider','properti','testimoni','layanan'));
+        $agen = DB::table('agen')
+        ->limit(3)
+        ->get();
+        return view('home.index',compact('slider','properti','testimoni','layanan','agen'));
     }
 
     /**

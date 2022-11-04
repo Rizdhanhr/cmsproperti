@@ -114,16 +114,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url('about') }}">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="property-grid.html">Property</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="blog-grid.html">Blog</a>
-          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-             Kategori
+              Properti
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               @foreach ($kategori as $k)
@@ -131,6 +125,9 @@
               @endforeach
             </div>
       
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('blog') }}">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('contact') }}">Contact</a>

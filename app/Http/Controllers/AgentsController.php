@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-class AboutController extends Controller
+
+class AgentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = DB::table('about')->get();
-        $team = DB::table('team')->get();
-        return view('about.index',compact('team','about'));
+        $agents = DB::table('agen')->paginate(10);
+        return view('agents.index',compact('agents'));
     }
 
     /**
@@ -25,7 +25,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -47,7 +47,8 @@ class AboutController extends Controller
      */
     public function show($id)
     {
-        //
+        $agents = DB::table('agen')->where('id',$id)->get();
+        return view('agents.show',compact('agents'));
     }
 
     /**
