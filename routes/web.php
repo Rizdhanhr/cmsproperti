@@ -13,8 +13,9 @@ use App\Http\Controllers\AdminTeamController;
 use App\Http\Controllers\AdminContactController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OurAgentsController;
-use App\Http\Controllers\OurServiesController;
+use App\Http\Controllers\OurServicesController;
 use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\AdminArtikelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,4 +50,5 @@ Route::group(['middleware' => ['authcheck']],function () {
     Route::resource('/admin-ouragents', OurAgentsController::class);
     Route::resource('/admin-ourservices', OurServicesController::class);
     Route::resource('/admin-testimoni', TestimoniController::class);
+    Route::resource('/admin-artikel', AdminArtikelController::class);
 });

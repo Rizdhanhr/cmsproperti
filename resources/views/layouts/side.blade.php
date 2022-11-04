@@ -47,6 +47,11 @@
                                     <span class="sub-item">Kategori</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{url('admin-artikel')}}">
+                                    <span class="sub-item">Artikel</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -64,7 +69,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ url('admin-ourservies') }}">
+                                <a href="{{ url('admin-ourservices') }}">
                                     <span class="sub-item">Our Services</span>
                                 </a>
                             </li>

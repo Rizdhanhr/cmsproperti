@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Alert;
 
 class OurServicesController extends Controller
 {
@@ -13,7 +15,8 @@ class OurServicesController extends Controller
      */
     public function index()
     {
-        //
+        $services = DB::table('layanan')->get();
+        return view('admin.services.index',compact('services'));
     }
 
     /**
@@ -23,7 +26,7 @@ class OurServicesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.services.create');
     }
 
     /**
@@ -34,7 +37,24 @@ class OurServicesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nama' => 'required',
+            'deskripsi' => 'required'
+        ]);
+
+       try{
+        DB::transaction(function () use($request){
+            DB::table('layanan')->insert([
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi
+            ]);
+        });
+        Alert::success('Sukses','Data Berhasil Ditambah');
+        return redirect('admin-ourservices');
+       }catch(Exception $e){
+        Alert::error('Gagal','Data Gagal Ditambah');
+        return redirect('admin-ourservices');
+       }
     }
 
     /**
@@ -56,7 +76,8 @@ class OurServicesController extends Controller
      */
     public function edit($id)
     {
-        //
+       $services = DB::table('layanan')->where('id',$id)->get();
+       return view('admin.services.edit',compact('services'));
     }
 
     /**
@@ -68,7 +89,24 @@ class OurServicesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nama' => 'required',
+            'deskripsi' => 'required'
+        ]);
+
+       try{
+        DB::transaction(function () use($request,$id){
+            DB::table('layanan')->where('id',$id)->update([
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi
+            ]);
+        });
+        Alert::success('Sukses','Data Berhasil Diubah');
+        return redirect('admin-ourservices');
+       }catch(Exception $e){
+        Alert::error('Gagal','Data Gagal Diubah');
+        return redirect('admin-ourservices');
+       }
     }
 
     /**
@@ -79,6 +117,14 @@ class OurServicesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            DB::transaction(function () use($id) {
+                DB::table('layanan')->where('id',$id)->delete();
+            });
+            Alert::success('Sukses','Data Berhasil Dihapus');
+            return redirect()->back();
+        }catch(Exception $e){
+
+        }
     }
 }

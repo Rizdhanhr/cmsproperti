@@ -61,54 +61,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
-          <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fa fa-gamepad"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c">Lifestyle</h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                convallis a pellentesque
-                nec, egestas non nisi.
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-c foo">
-            <div class="card-header-c d-flex">
-              <div class="card-box-ico">
-                <span class="fa fa-usd"></span>
-              </div>
-              <div class="card-title-c align-self-center">
-                <h2 class="title-c">Loans</h2>
-              </div>
-            </div>
-            <div class="card-body-c">
-              <p class="content-c">
-                Nulla porttitor accumsan tincidunt. Curabitur aliquet quam id dui posuere blandit. Mauris blandit
-                aliquet elit, eget tincidunt
-                nibh pulvinar a.
-              </p>
-            </div>
-            <div class="card-footer-c">
-              <a href="#" class="link-c link-icon">Read more
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
-          </div>
-        </div>
+        @foreach ($layanan as $lay)
         <div class="col-md-4">
           <div class="card-box-c foo">
             <div class="card-header-c d-flex">
@@ -116,14 +69,12 @@
                 <span class="fa fa-home"></span>
               </div>
               <div class="card-title-c align-self-center">
-                <h2 class="title-c">Sell</h2>
+                <h2 class="title-c">{{ $lay->nama }}</h2>
               </div>
             </div>
             <div class="card-body-c">
               <p class="content-c">
-                Sed porttitor lectus nibh. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa,
-                convallis a pellentesque
-                nec, egestas non nisi.
+                {!! $lay->deskripsi !!}
               </p>
             </div>
             <div class="card-footer-c">
@@ -133,6 +84,7 @@
             </div>
           </div>
         </div>
+        @endforeach
       </div>
     </div>
   </section>
@@ -145,7 +97,7 @@
         <div class="col-md-12">
           <div class="title-wrap d-flex justify-content-between">
             <div class="title-box">
-              <h2 class="title-a">Latest Properties</h2>
+              <h2 class="title-a">Properti Terbaru</h2>
             </div>
             <div class="title-link">
               <a href="property-grid.html">All Property
@@ -542,12 +494,13 @@
         </div>
       </div>
       <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+        @foreach ($testimoni as $tes)
         <div class="carousel-item-a">
           <div class="testimonials-box">
             <div class="row">
               <div class="col-sm-12 col-md-6">
                 <div class="testimonial-img">
-                  <img src="{{ asset('frontend') }}/img/testimonial-1.jpg" alt="" class="img-fluid">
+                  <img src="{{ asset($tes->gambar) }}" style="width : 550px; height : 450px;" alt="" class="img-fluid">
                 </div>
               </div>
               <div class="col-sm-12 col-md-6">
@@ -556,46 +509,18 @@
                 </div>
                 <div class="testimonials-content">
                   <p class="testimonial-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                    debitis hic ber quibusdam
-                    voluptatibus officia expedita corpori.
+                    {{ $tes->deskripsi }}
                   </p>
                 </div>
                 <div class="testimonial-author-box">
-                  <img src="{{ asset('frontend') }}/img/mini-testimonial-1.jpg" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">Albert & Erika</h5>
+                  <img src="{{ asset($tes->gambar) }}" alt="" class="testimonial-avatar">
+                  <h5 class="testimonial-author">{{ $tes->nama }}</h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="{{ asset('frontend') }}/img/testimonial-2.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, cupiditate ea nam praesentium
-                    debitis hic ber quibusdam
-                    voluptatibus officia expedita corpori.
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="{{ asset('frontend') }}/img/mini-testimonial-2.jpg" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">Pablo & Emma</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </section>
