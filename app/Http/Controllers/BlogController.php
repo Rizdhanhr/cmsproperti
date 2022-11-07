@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+
 class BlogController extends Controller
 {
     /**
@@ -13,7 +14,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog.index');
+        $artikel = DB::table('blog')
+        ->join('kategori_blog','kategori_blog.id','blog.id_kategori_blog')
+        ->select('blog.*','kategori_blog.nama as nama_kategori')
+        ->paginate(10);
+        return view('blog.index',compact('artikel'));
     }
 
     /**
@@ -45,7 +50,12 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $artikel = DB::table('blog')
+        ->join('kategori_blog','kategori_blog.id','blog.id_kategori_blog')
+        ->select('blog.*','kategori_blog.nama as nama_kategori')
+        ->where('blog.id',$id)
+        ->get();
+        return view('blog.show',compact('artikel'));
     }
 
     /**

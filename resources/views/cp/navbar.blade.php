@@ -121,13 +121,14 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               @foreach ($kategori as $k)
-              <a class="dropdown-item" href="property-single.html">{{ $k->nama }}</a>
+          
+              <a class="dropdown-item" href="properti/kategori/{{ $k->id }}">{{ $k->nama }}</a>
               @endforeach
             </div>
       
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('blog') }}">Blog</a>
+            <a class="nav-link" href="{{url('artikel')}}">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url('contact') }}">Contact</a>

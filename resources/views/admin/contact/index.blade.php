@@ -37,10 +37,10 @@
 								
                                     <div class="d-flex align-items-center">
 										<h4 class="card-title">Contact</h4>
-										{{-- <button class="btn btn-primary btn-round ml-auto" onclick="window.location.href='{{route('admin-contact.create')}}'">
+										<button class="btn btn-primary btn-round ml-auto" onclick="window.location.href='{{route('admin-contact.create')}}'">
 											<i class="fa fa-plus"></i>
 											Add Row
-										</button> --}}
+										</button>
 									</div>
 								</div>
 								<div class="card-body">

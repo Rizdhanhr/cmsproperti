@@ -55,13 +55,17 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
+          @foreach ($kontak as $row)
           <div class="contact-map box">
             <div id="map" class="contact-map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.33408716548146!2d112.7140499431918!3d-7.31504123208432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fd8ce1c089ad%3A0xdfbd636f656626cc!2sPalm%20Spring%20Regency%20B-36%20Jambangan%20Surabaya!5e0!3m2!1sid!2sid!4v1667512609386!5m2!1sid!2sid"
-                width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+              {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.33408716548146!2d112.7140499431918!3d-7.31504123208432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fd8ce1c089ad%3A0xdfbd636f656626cc!2sPalm%20Spring%20Regency%20B-36%20Jambangan%20Surabaya!5e0!3m2!1sid!2sid!4v1667512609386!5m2!1sid!2sid"
+                width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> --}}
                
+               <iframe src="{{ $row->map }}"
+                width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
             </div>
           </div>
+          @endforeach
         </div>
         <div class="col-sm-12 section-t8">
           <div class="row">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use Alert;
+use App\Models\Contact;
 
 class AdminContactController extends Controller
 {
@@ -109,7 +110,8 @@ class AdminContactController extends Controller
                     'nomor' => $request->nomor,
                     'email' => $request->email,
                     'whatsapp' => $request->whatsapp,
-                    'alamat' => $request->alamat
+                    'alamat' => $request->alamat,
+                    'map' => $request->map
                 ]);
              
             });

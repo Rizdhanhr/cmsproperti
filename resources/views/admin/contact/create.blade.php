@@ -66,6 +66,10 @@
                                         <textarea class="ckeditor form-control @error('deskripsi') is-invalid @enderror" name="deskripsi">{{ old('deskripsi') }}</textarea>
                                         <span style="color :red">@error('deskripsi') {{ $message }} @enderror</span>
                                     </div>
+									<div class="form-group">
+                                        <label for="Nama Kategori">Link Google Maps</label>
+                                        <textarea class="form-control" name="map">{{ old('map') }}</textarea>
+                                    </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" id="simpan">Simpan</button>
                                     </div>

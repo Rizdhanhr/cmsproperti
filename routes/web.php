@@ -19,6 +19,7 @@ use App\Http\Controllers\AdminArtikelController;
 use App\Http\Controllers\AdminKategoriArtikelController;
 use App\Http\Controllers\AgentsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PropertiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +39,10 @@ Route::resource('/', HomeController::class);
 Route::resource('about',AboutController::class);
 Route::resource('contact',ContactController::class);
 Route::resource('agents',AgentsController::class);
-Route::resource('blog',BlogController::class);
+Route::resource('artikel',BlogController::class);
+Route::get('properti/kategori/{id}',[PropertiController::class,'index']);
+Route::get('properti-detail/{id}',[PropertiController::class,'show']);
+
 Route::get('/login',[LoginController::class,'login']);
 Route::post('/postlogin',[LoginController::class,'postLogin']);
 

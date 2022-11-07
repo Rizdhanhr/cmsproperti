@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Blog</title>
+  <title>EstateAgency Bootstrap Template</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
-    @include('cp.css')
+ @include('cp.css')
 
   <!-- =======================================================
     Theme Name: EstateAgency
@@ -21,7 +21,6 @@
 <body>
 
   @include('cp.navbar')
-
   <!--/ Intro Single star /-->
   <section class="intro-single">
     <div class="container">
@@ -52,80 +51,37 @@
   <!--/ News Grid Star /-->
   <section class="news-grid grid">
     <div class="container">
+   
       <div class="row">
+        @foreach($artikel as $ar)
         <div class="col-md-4">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
-              <img src="{{ asset('frontend') }}/img/post-1.jpg" alt="" class="img-b img-fluid">
+              <img src="{{ asset($ar->gambar) }}" style="height : 400px; width : 450px;" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
                 <div class="card-category-b">
-                  <a href="#" class="category-b">Travel</a>
+                  <a href="{{ route('artikel.show',$ar->id) }}" class="category-b">{{ $ar->nama_kategori }}</a>
                 </div>
                 <div class="card-title-b">
                   <h2 class="title-2">
-                    <a href="blog-single.html">Travel is comming
-                      <br> new</a>
+                    <a href="{{ route('artikel.show',$ar->id) }}">{{$ar->judul}}
                   </h2>
                 </div>
                 <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
+                  <span class="date-b">{{ date('d F Y', strtotime($ar->created_at)) }}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="{{ asset('frontend') }}/img/post-2.jpg" alt="" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="blog-single.html" class="category-b">Travel</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Travel is comming
-                      <br> new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-       
+        @endforeach
       </div>
+
       <div class="row">
         <div class="col-sm-12">
-          <nav class="pagination-a">
-            <ul class="pagination justify-content-end">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1">
-                  <span class="ion-ios-arrow-back"></span>
-                </a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="#">2</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#">3</a>
-              </li>
-              <li class="page-item next">
-                <a class="page-link" href="#">
-                  <span class="ion-ios-arrow-forward"></span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          {{ $artikel->links('vendor.pagination.custom') }}
         </div>
       </div>
     </div>

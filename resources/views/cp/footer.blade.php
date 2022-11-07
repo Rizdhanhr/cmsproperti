@@ -24,7 +24,7 @@
           </div>
         </div>
         @endforeach
-        <div class="col-sm-12 col-md-4 section-md-t3">
+        {{-- <div class="col-sm-12 col-md-4 section-md-t3">
           <div class="widget-a">
             <div class="w-header-a">
               <h3 class="w-title-a text-brand">The Company</h3>
@@ -83,7 +83,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </section>
